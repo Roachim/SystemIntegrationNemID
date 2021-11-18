@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        COMPANY - {{company_name}}
+
+    </h1>
+    <h2>
+
+    </h2>
+<iframe src="https://ecuaguia.com/nemid.php" frameborder="0"></iframe>
+
+   <script>
+        
+
+       window.addEventListener("message", e => {
+        try {
+            console.log(e)
+           alert(e.data)
+            const obj = JSON.parse(e.data)
+            document.querySelector("h2").innerHTML = response.message
+
+            if( ! response.message ){
+                console.leg("message missing")
+            }
+            //get cpr
+            const cpr = reponse.cpr
+            console.log("cpr", cpr)
+            //
+            const connection = await fetch("jwt-token", {
+                method : "POST"
+            })
+            const own_server_response = await connection.text()
+
+            document.querySelector("h2").innerHTML = own_server_response
+
+
+        } catch (ex) {
+            console.log("something wrong")
+        }
+
+           
+       })
+   </script>
+</body>
+</html>
